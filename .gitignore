@@ -5,3 +5,4 @@ node_modules
 .yarn-integrity
 .yarn-metadata
 pythonSrc/__pycache__
+.DS_Store
