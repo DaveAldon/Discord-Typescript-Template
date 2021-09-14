@@ -1,0 +1,7 @@
+yarn-error.log
+.env
+build
+node_modules
+.yarn-integrity
+.yarn-metadata
+pythonSrc/__pycache__
