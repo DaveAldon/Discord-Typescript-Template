@@ -2,7 +2,7 @@ import express, { Request, Response } from 'express';
 import { Intents, Client } from 'discord.js';
 import { DISCORD_TOKEN, OWNER, BOT_NAME } from './config/secrets';
 import { commands } from './slashCommands/registerCommands';
-import { deployCommands } from './slashCommands/deployCommands';
+import { deleteCommands, deployCommands } from './slashCommands/deployCommands';
 
 const PORT = process.env.PORT || 5000;
 
@@ -24,12 +24,17 @@ app.use('/', (_request: Request, response: Response) => {
   response.sendStatus(200);
 });
 client.on('messageCreate', message => {
-  // Deploy slash commands with "!<BOT_NAME>_deploy <GUILD_ID>"
   if (message.author.id !== OWNER) return;
   if (message.content.startsWith(`!${BOT_NAME}_deploy`)) {
     try {
-      const inputGuildId = message.content.split(' ')[1];
-      deployCommands(inputGuildId);
+      message.guildId && deployCommands(message.guildId);
+    } catch (error) {}
+  }
+
+  if (message.content.startsWith(`!${BOT_NAME}_remove`)) {
+    try {
+      const slashCommandName = message.content.split(' ')[1];
+      message.guildId && deleteCommands(message.guildId, slashCommandName);
     } catch (error) {}
   }
 });
