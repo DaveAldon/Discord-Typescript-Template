@@ -1,6 +1,7 @@
 yarn-error.log
 .env
 build
+dist
 node_modules
 .yarn-integrity
 .yarn-metadata

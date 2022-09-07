@@ -2,19 +2,18 @@
 
 This is my template I use to spin up quick Discord bots, complete with the following features ready to go:
 
-- Discord API v13
+- Discord API v14.3.0
 - Typescript
 - Prettier
-- Express
-- Heroku deployment commands
-- Discord Slash commands (API registration and usage)
-- Python-Shell interaction
-- Python setup for Heroku and Python 3.8.8
-- Tensorflow 2.4.0 framework (I use Tensorflow a lot with my bots)
-- Index Generator for imports, run `yarn index` to automatically add new commands
+- Discord Slash commands (API registration and deletion support)
+- Development environment switching
+- Local, in-memory database (LokiJS)
+  - In this example it handles the blocking of commands being run too frequently
+  - Useful to keep track of state between separate interactions
+  - Can be easily changed
 
 ### Installation
 
 1. Create a discord bot
-2. Add its client id to the `secrets.ts` file
-3. Add its secret token to the `.env` file
+2. Create an `.env` file and populate its fields using the `.env.example` file
+3. Run `npm install` and `npm run start`
